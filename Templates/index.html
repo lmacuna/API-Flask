@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FORMULARIO</title>
+    </head>
+    <body>
+        
+  
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div id="alert" class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-disabled="true">&times;</span>
+    </button>
+  </div>
+
+{% endfor %}
+{% endif %}
+{% endwith %}
+<form action="/add_contact" method="POST">
+    
+    <input type="text" name="fullname" placeholder="Fullname">
+    <input type="text" name="phone" placeholder="Phone">
+    <input type="text" name="email" placeholder="Email">
+    <button type="submit">
+        Agregar contacto
+    </button>
+     
+</form>
+
+<style>
+    #alert{
+             background:orange;
+             margin-left: 30px;
+             width: 230px;
+             height: 30px;
+             padding: 5px;
+    }
+    body {
+        background:blue;
+        
+    }
+    form {
+        width: 28%;
+        background: lightseagreen;
+        border: 1px solid #ccc;
+        margin: 20px;
+        padding: 20px;
+    }
+
+    label {
+        font-size: 12px;
+        display: block;
+        width: 100%;
+    }
+
+   
+
+    input,
+    textarea {
+        margin-bottom: 20px;
+        width: 100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+    }
+
+    input:hover,
+    textarea:hover {
+        border: 2px solid blue;
+    }
+
+    #boton {
+        width: 25%;
+        border: none;
+
+
+    }
+
+    input:focus,
+    textarea:focus {
+        border: 3px solid #1668c4;
+    }
+
+    input[type="submit"] {
+        margin-bottom: 0;
+        background: blue;
+        color: white;
+        border: none;
+
+    }
+
+    input[type="submit"]:hover {
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:active {
+        background: white;
+        color: blue;
+        border: none;
+    }
+    form {
+        text-align: center;
+    }
+    #busca{
+          width:25%;
+    }
+</style>
+<div class="contactos">
+   
+
+<table>
+   
+   
+  
+    <th>  
+    <td>Fullname</td>
+    <br>
+    <td>Phone</td>
+    <br>
+    <td>Email</td>
+    <br>
+    <td>Operations</td>
+    </th>
+    <hr>
+    <div class="contactos">
+        <h1>CONTACTOS</h1>
+    </div>
+    
+    <style>
+        .contactos > h1{
+            font-size: 75px;
+            color: red;
+            text-align: center;
+            text-shadow: 5px 5px 5px #ccc;
+        }
+         table {
+            text-align: left;
+           
+        }
+        table td {
+            margin: 15px;
+            padding: 10px;
+
+        }
+        .contactos {
+            text-align: left;
+            margin-left: 20px;
+        }
+    </style>
+        
+    <tbody>
+        <style>
+            tbody {
+                color: black;
+                
+            }
+        </style>
+        
+        {% for contact in Contacts %}
+        <tr>
+           
+             
+            <td>{{ contact.id }}</td> 
+            <td>{{ contact.fullname }}</td>
+            <td>{{ contact.phone }}</td>
+            <td>{{ contact.email }}</td>
+          
+            
+            <td>
+                <style>
+                    tr > td{
+                        font-size: 18px;
+                    }
+                    td .editar{
+                        color:cyan;
+                    }
+                    td .delete{
+                        color:violet;
+                    }
+                    td .editar:hover{
+                        color:orange;
+                    }
+                    td .delete:hover{
+                        color:orange;
+                    }
+                </style>
+                <a class="editar" href="/edit/{{ contact.id }}" method="POST">EDITAR</a>
+                <a class="delete" href="/delete/{{ contact.id }}"method="DELETE">BORRAR</a>
+                <hr>
+            </td>
+            
+
+        </tr>
+         
+        {% endfor %}
+      
+    </tbody>
+    <br>
+  
+    <br>
+    <hr>
+</table>
+<hr>
+</div>
+<hr>
+</body>
+<div style="text-align: center;"><div style="position:relative; top:0; margin-right:auto;margin-left:auto; z-index:99999"></div>
+</html>

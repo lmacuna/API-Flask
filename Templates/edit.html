@@ -1,0 +1,137 @@
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <head><title>
+        EDITANDO CONTACTO
+    </title></head>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+     <style>
+         form {
+             text-align: center;
+             font-size: 25px;
+         }
+         div{
+             background:orange;
+             margin-left: 30px;
+             width: 200px;
+             height: 30px;
+             padding: 5px;
+         }
+         body {
+             background:blue;
+         }
+         a {
+             color: red;
+             font-size: 18px;
+         }
+         a:hover{
+             color: #ccc;
+             
+         }
+         a:active{
+             color: blue;
+         }
+         .volver {
+             background: white;
+             margin:25px;
+             width: 50px;
+         }
+         .volver:hover{
+             background: red;
+             color: blue;
+         }
+       
+         .volver:active{
+             background: #ccc;
+         }
+     </style>
+     <div class="volver">
+        <a href="/">volver</a>
+     </div>
+     
+     <h1>{{ contact.id }}</h1>
+    <form action="/update_contact/{{ contact.id }}" method="POST">
+        <input type="text" name="id" value="{{ contact.id }}">
+        <input type="text" name="fullname" value ="{{ contact.fullname }}">
+        <input type="text" name="phone" value="{{ contact.phone }}">
+        <input type="text" name="email" value="{{ contact.email }}">
+        <button type="submit" method="PATCH">
+            ACTUALIZAR
+            
+           </button>
+        
+    </form> 
+    
+    <td>{{ contact.id}}</td>
+    <td>{{ contact.fullname }}</td>
+    <td>{{ contact.phone }}</td>
+    <td>{{ contact.email }}</td> 
+    <style>
+        form {
+            width: 28%;
+            background: lightseagreen;
+            border: 1px solid #ccc;
+            margin: 20px 50px;
+
+            padding: 20px;
+        }
+    
+        label {
+            font-size: 12px;
+            display: block;
+            width: 100%;
+        }
+    
+       
+    
+        input,
+        textarea {
+            margin-bottom: 20px;
+            width: 100%;
+            padding: 10px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+        }
+    
+        input:hover,
+        textarea:hover {
+            border: 2px solid blue;
+        }
+    
+        #boton {
+            width: 25%;
+            border: none;
+    
+    
+        }
+    
+        input:focus,
+        textarea:focus {
+            border: 3px solid #1668c4;
+        }
+    
+        input[type="submit"] {
+            margin-bottom: 0;
+            background: blue;
+            color: white;
+            border: none;
+    
+        }
+    
+        input[type="submit"]:hover {
+            background: #ccc;
+            cursor: pointer;
+        }
+
+         
